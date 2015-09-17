@@ -6,18 +6,48 @@ public class DriverController : MonoBehaviour {
 	public GameObject parent;
 	public GameObject driverPos;
 	public GameObject driver;
+
+	private bool keyPressed;
+	private string keyUp;
+	private string keyLeft;
+	private string keyRight;
+
 	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
+		keyPressed = false;
+		keyUp = parent.GetComponent<BoatController>().upKey;
+		keyLeft = parent.GetComponent<BoatController>().leftKey;
+		keyRight = parent.GetComponent<BoatController>().rightKey;
 		anim = driver.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		updatePos();
+		UpdatePos();
+		CheckKeyPressed();
 
-		// start driver up anim
+		if(keyPressed) {
+			anim.SetBool("moving", true);
+			ChangeMovingAnim();
+		}
+		else {
+			anim.SetBool("moving", false);
+		}
+	}
+
+	void CheckKeyPressed() {
+		if(!(Input.GetKey(keyUp) || Input.GetKey(keyRight) || Input.GetKey(keyLeft))) {
+			keyPressed = false;
+		}
+		else {
+			keyPressed = true;
+		}
+	}
+
+	void ChangeMovingAnim() {
+			// start driver up anim
 		if((65 > parent.transform.eulerAngles.z || parent.transform.eulerAngles.z >= 295) && anim.GetInteger("dir") != 1) {
 			anim.SetInteger("dir", 1);
 		}
@@ -35,7 +65,7 @@ public class DriverController : MonoBehaviour {
 		}
 	}
 
-	void updatePos() {
+	void UpdatePos() {
 		transform.position = new Vector2(driverPos.transform.position.x, driverPos.transform.position.y);
 	}
 }
