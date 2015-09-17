@@ -34,10 +34,10 @@ public class BoatController : MonoBehaviour {
 			float angle = (Mathf.PI-(Mathf.PI/4)*horizontalDir)/2;
 			gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.TransformVector(new Vector2 (Mathf.Cos (angle)*force,/*-Mathf.Sin(angle)*force*/0)), transform.localPosition);
 		}
-		print (new Vector2 (-transform.InverseTransformVector(gameObject.GetComponent<Rigidbody2D>().velocity).x, 0));
+		//print (new Vector2 (-transform.InverseTransformVector(gameObject.GetComponent<Rigidbody2D>().velocity).x, 0));
 		if (transform.InverseTransformVector(gameObject.GetComponent<Rigidbody2D>().velocity).x!=0){
 			Vector2 force = transform.InverseTransformVector(gameObject.GetComponent<Rigidbody2D>().velocity);
-			print (force.x);
+			//print (force.x);
 			gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(-new Vector2 (force.x, 0));
 		}
 	}
