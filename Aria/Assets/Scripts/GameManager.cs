@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
 	private float totalTime;
 	private bool gameStart;
 
+	private int team1Score;
+	private int team2Score;
+
 	public float countDownTime;
 	public Text countDownTxt;
 
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour {
 		foreach(GameObject p in players) {
 			StopMov(p);
 		}
+		team1Score=0;
+		team2Score=0;
 	}
 	
 	// Update is called once per frame
@@ -66,5 +71,14 @@ public class GameManager : MonoBehaviour {
 		int minutes = (int) (totalTime/60);
 		string seconds = string.Format("{0:00.00}", totalTime - minutes*60);
 		gameTimer.text = minutes.ToString() + ":" + seconds;
+	}
+
+	public void AddScore(int team){
+		if (team==1){
+			team1Score++;
+		}
+		else if (team==2){
+			team2Score++;
+		}
 	}
 }
