@@ -15,11 +15,11 @@ public class GameManager : MonoBehaviour {
 	private int team2Score;
 
 	public float countDownTime;
-	public Text countDownTxt;
+	private Text countDownTxt;
 	private bool countDownOver;
 
 	public float gameTime;
-	public Text gameTimer;
+	private Text gameTimer;
 
 	private GameObject cat;
 	private Vector3 catPos;
@@ -39,16 +39,17 @@ public class GameManager : MonoBehaviour {
 	public GameObject redDriver;
 	public GameObject blueDriver;
 
+	public GameObject trans;
+
 	// Use this for initialization
 	void Awake () {
+		DontDestroyOnLoad(this.gameObject);
 		if(GameObject.FindGameObjectsWithTag("MainCamera").Length > 1) {
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 		else {
 			LoadXML();
 		}
-		SetupGame();
-		gameStart = true;
 	}
 	
 	// Update is called once per frame
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour {
 			countDownTxt.enabled = false;
 			countDownOver = true;
 			totalTime = previousTime;
-			countDownTxt.GetComponent<Animator>().SetBool("counterOn", !countDownOver);
+			//countDownTxt.GetComponent<Animator>().SetBool("counterOn", !countDownOver);
 			foreach(GameObject p in players) {
 				StartMov(p);
 			}
@@ -152,7 +153,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// only called once per game
-	void SetupGame() {
+	public void SetupGame() {
 		ReadXML();
 
 		// Set up players		
@@ -170,6 +171,8 @@ public class GameManager : MonoBehaviour {
 		SetPositions();
 
 		// set up timer
+		countDownTxt = GameObject.FindGameObjectsWithTag("CountDown")[0].GetComponent<Text>();
+		gameTimer = GameObject.FindGameObjectsWithTag("Timer")[0].GetComponent<Text>();
 		countDownTime += 1;
 		totalTime = gameTime;
 		UpdateTimer();
@@ -177,11 +180,16 @@ public class GameManager : MonoBehaviour {
 		totalTime = countDownTime;
 		countDownOver = false;
 		countDownTxt.enabled = true;
-		countDownTxt.GetComponent<Animator>().SetBool("counterOn", !countDownOver);
+		//countDownTxt.GetComponent<Animator>().SetBool("counterOn", !countDownOver);
 
 		// set up team score		
 		team1Score=0;
 		team2Score=0;
+
+	}
+
+	public void StartNOW() {
+		gameStart = true;
 	}
 
 	// Get the necessary information to spawn and create the players
