@@ -16,9 +16,8 @@ public class BoatController : MonoBehaviour {
 		horizontalDir = 0;
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		if(Input.GetKey(leftKey)) {
-			Debug.Log("BOOP");
 			horizontalDir = -1;
 		}
 		else if(Input.GetKey(rightKey)) {
@@ -35,9 +34,8 @@ public class BoatController : MonoBehaviour {
 			gameObject.GetComponent<Rigidbody2D> ().AddRelativeForce (-new Vector2 (0, acceleration/2));
 		}
 		if (horizontalDir != 0) {
-			float force = Mathf.Sqrt(2*(Mathf.Pow(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude,2F))-2*(Mathf.Pow(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude,2F))*Mathf.Cos((Mathf.PI/4)*Input.GetAxis ("Horizontal")));
+			float force = Mathf.Sqrt(2*(Mathf.Pow(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude,2F))-2*(Mathf.Pow(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude,2F))*Mathf.Cos((Mathf.PI/4)*horizontalDir));
 			if (Input.GetKey(upKey)){
-				Debug.Log(horizontalDir);
 				float angle = (Mathf.PI-(Mathf.PI/4)*horizontalDir)/2;
 				gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.TransformVector(new Vector2 (Mathf.Cos (angle)*force,/*-Mathf.Sin(angle)*force*/0)), transform.localPosition);
 			}
@@ -50,5 +48,10 @@ public class BoatController : MonoBehaviour {
 			Vector2 force = transform.InverseTransformVector(gameObject.GetComponent<Rigidbody2D>().velocity);
 			gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2 (-force.x*3F,0));
 		}
+	}
+
+	public void Stop() {
+		gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+		gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0f; 
 	}
 }
