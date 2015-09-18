@@ -54,8 +54,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		totalTime -= Time.deltaTime;
 		if(gameStart) {
+			totalTime -= Time.deltaTime;
 			if(!countDownOver) {
 				CountDown();
 			}
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour {
 			countDownTxt.enabled = false;
 			countDownOver = true;
 			totalTime = previousTime;
-			//countDownTxt.GetComponent<Animator>().SetBool("counterOn", !countDownOver);
+			countDownTxt.GetComponent<Animator>().SetBool("counterOn", !countDownOver);
 			foreach(GameObject p in players) {
 				StartMov(p);
 			}
@@ -173,14 +173,14 @@ public class GameManager : MonoBehaviour {
 		// set up timer
 		countDownTxt = GameObject.FindGameObjectsWithTag("CountDown")[0].GetComponent<Text>();
 		gameTimer = GameObject.FindGameObjectsWithTag("Timer")[0].GetComponent<Text>();
+		countDownTxt.text = (countDownTime).ToString();
+		countDownTxt.enabled = false;
 		countDownTime += 1;
 		totalTime = gameTime;
 		UpdateTimer();
 		previousTime = gameTime;
 		totalTime = countDownTime;
 		countDownOver = false;
-		countDownTxt.enabled = true;
-		//countDownTxt.GetComponent<Animator>().SetBool("counterOn", !countDownOver);
 
 		// set up team score		
 		team1Score=0;
@@ -190,6 +190,8 @@ public class GameManager : MonoBehaviour {
 
 	public void StartNOW() {
 		gameStart = true;
+		countDownTxt.enabled = true;
+		countDownTxt.GetComponent<Animator>().SetBool("counterOn", !countDownOver);
 	}
 
 	// Get the necessary information to spawn and create the players
