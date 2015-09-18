@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <game>
-	<playerRed num="2"></playerRed>
-	<playerRed num="3"></playerRed>
-	
-	<playerBlue num="1"></playerBlue>
-	<playerBlue num="4"></playerBlue>
+	<teamOne>
+		<playerRed num="2"></playerRed>
+		<playerRed num="3"></playerRed>
+	</teamOne>
+
+	<teamTwo>
+		<playerBlue num="1"></playerBlue>
+		<playerBlue num="4"></playerBlue>
+	</teamTwo>
 	
 	<twoVtwo>
 		<redTeam>
-			<pos x="-6" y="0"></pos>
-			<pos x="-2.8" y="0"></pos>
+			<pos x="-6" y="0" angle=""></pos>
+			<pos x="-2.8" y="0" angle=""></pos>
 		</redTeam>
 		
 		<blueTeam>
-			<pos x="-6" y="0"></pos>
-			<pos x="-2.8" y="0"></pos>
+			<pos x="-6" y="0" angle=""></pos>
+			<pos x="-2.8" y="0" angle=""></pos>
 		</blueTeam>
 	</twoVtwo>
 		
 	<oneVone>
-		<pos x="-6" y="0"></pos>
-		<pos x="-2.8" y="0"></pos>
+		<redTeam>
+			<pos x="-6" y="0"></pos>
+		</redTeam>
+		
+		<blueTeam>
+			<pos x="-2.8" y="0"></pos>
+		</blueTeam>
 	</oneVone>
 	
 	<p1 up="w" down="s" left="a" right="d"></p1>

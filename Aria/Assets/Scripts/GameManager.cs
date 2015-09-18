@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour {
 		}
 		else {
 			LoadXML();
+			RemoveTeams(root.SelectNodes("teamTwo").Item(0));
+			RemoveTeams(root.SelectNodes("teamOne").Item(0));
 		}
 	}
 	
@@ -108,7 +110,7 @@ public class GameManager : MonoBehaviour {
 		
 		for(int i = 0; i < team.Count; i++) {
 			Vector3 temp = new Vector3(float.Parse(positions.Item(i).Attributes["x"].Value), float.Parse(positions.Item(i).Attributes["y"].Value), 0f);
-
+			
 			GameObject pBoat = (GameObject) Instantiate(boatPrefab, temp, Quaternion.identity);
 			
 			XmlNode controls = xmlDoc.DocumentElement.SelectNodes("p" + team.Item(i).Attributes["num"].Value).Item(0);
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour {
 
 			players.Add(pBoat);
 			spawnPts.Add(temp);
+			
 		}
 		
 	}
@@ -196,8 +199,10 @@ public class GameManager : MonoBehaviour {
 
 	// Get the necessary information to spawn and create the players
 	void ReadXML() {
-		redTeam = root.SelectNodes("playerRed");
-		blueTeam = root.SelectNodes("playerBlue");
+		redTeam = root.SelectNodes("teamOne/playerRed");
+		blueTeam = root.SelectNodes("teamTwo/playerBlue");
+		Debug.Log(redTeam.Count + " ;3;");
+		Debug.Log(blueTeam.Count + " weeeeeeeeeeeeeep");
 		string gameType = "oneVone";
 
 		if(redTeam.Count == 2) {
@@ -206,6 +211,18 @@ public class GameManager : MonoBehaviour {
 
 		posRed = root.SelectNodes(gameType + "/redTeam/pos");
 		posBlue = root.SelectNodes(gameType + "/blueTeam/pos");
+	}
+
+	public void AddTeamMember(string teamNum, string playerNum, string player) {
+    	XmlElement el = (XmlElement) root.SelectNodes(teamNum).Item(0).AppendChild(xmlDoc.CreateElement(player));
+    	el.SetAttribute("num", playerNum);
+    	Debug.Log(root.SelectNodes(teamNum + "/" + player).Item(0).Attributes["num"].Value + "(/x.x)/  └----┛");
+	}
+
+	void RemoveTeams(XmlNode node) {
+		while(node.HasChildNodes) {
+			node.RemoveChild(node.FirstChild);
+		}
 	}
 
 	void LoadXML() {
