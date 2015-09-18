@@ -18,6 +18,7 @@ public class BoatController : MonoBehaviour {
 
 	void FixedUpdate () {
 		if(Input.GetKey(leftKey)) {
+			Debug.Log("BOOP");
 			horizontalDir = -1;
 		}
 		else if(Input.GetKey(rightKey)) {
@@ -36,6 +37,7 @@ public class BoatController : MonoBehaviour {
 		if (horizontalDir != 0) {
 			float force = Mathf.Sqrt(2*(Mathf.Pow(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude,2F))-2*(Mathf.Pow(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude,2F))*Mathf.Cos((Mathf.PI/4)*Input.GetAxis ("Horizontal")));
 			if (Input.GetKey(upKey)){
+				Debug.Log(horizontalDir);
 				float angle = (Mathf.PI-(Mathf.PI/4)*horizontalDir)/2;
 				gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.TransformVector(new Vector2 (Mathf.Cos (angle)*force,/*-Mathf.Sin(angle)*force*/0)), transform.localPosition);
 			}

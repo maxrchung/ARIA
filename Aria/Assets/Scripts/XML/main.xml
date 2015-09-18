@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<game>
+	<playerRed num="2"></playerRed>
+	<playerRed num="3"></playerRed>
+	
+	<playerBlue num="1"></playerBlue>
+	<playerBlue num="4"></playerBlue>
+	
+	<twoVtwo>
+		<redTeam>
+			<pos x="-6" y="0"></pos>
+			<pos x="-2.8" y="0"></pos>
+		</redTeam>
+		
+		<blueTeam>
+			<pos x="-6" y="0"></pos>
+			<pos x="-2.8" y="0"></pos>
+		</blueTeam>
+	</twoVtwo>
+		
+	<oneVone>
+		<pos x="-6" y="0"></pos>
+		<pos x="-2.8" y="0"></pos>
+	</oneVone>
+	
+	<p1 up="w" down="s" left="a" right="d"></p1>
+	<p2 up="up" down="down" left="left" right="right"></p2>
+	<p3 up="t" down="g" left="f" right="h"></p3>
+	<p4 up="i" down="k" left="j" right="l"></p4>
+</game>
