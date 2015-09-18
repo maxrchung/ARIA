@@ -11,15 +11,18 @@ public class DriverController : MonoBehaviour {
 	private string keyUp;
 	private string keyLeft;
 	private string keyRight;
+	private BoatController ctrlScript;
 
 	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
+		ctrlScript = parent.GetComponent<BoatController>();
 		keyPressed = false;
-		keyUp = parent.GetComponent<BoatController>().upKey;
-		keyLeft = parent.GetComponent<BoatController>().leftKey;
-		keyRight = parent.GetComponent<BoatController>().rightKey;
+		keyUp = ctrlScript.upKey;
+		keyLeft = ctrlScript.leftKey;
+		keyRight = ctrlScript.rightKey;
+
 		anim = driver.GetComponent<Animator>();
 	}
 	
@@ -38,7 +41,7 @@ public class DriverController : MonoBehaviour {
 	}
 
 	void CheckKeyPressed() {
-		if(!(Input.GetKey(keyUp) || Input.GetKey(keyRight) || Input.GetKey(keyLeft))) {
+		if(!(Input.GetKey(keyUp) || Input.GetKey(keyRight) || Input.GetKey(keyLeft)) || !ctrlScript.enabled) {
 			keyPressed = false;
 		}
 		else {
