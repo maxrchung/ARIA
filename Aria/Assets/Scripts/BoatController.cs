@@ -8,6 +8,7 @@ public class BoatController : MonoBehaviour {
 	public string upKey;
 	public string leftKey;
 	public string rightKey;
+	public string downKey;
 	private int horizontalDir;
 
 	// Use this for initialization
@@ -29,8 +30,8 @@ public class BoatController : MonoBehaviour {
 		if (Input.GetKey(upKey)) {
 			gameObject.GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2 (0, acceleration));
 		}
-		else if (Input.GetAxis ("Vertical")<0){
-			gameObject.GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2 (0, acceleration*Input.GetAxis ("Vertical")/2));
+		else if (Input.GetKey(downKey)){
+			gameObject.GetComponent<Rigidbody2D> ().AddRelativeForce (-new Vector2 (0, acceleration/2));
 		}
 		if (horizontalDir != 0) {
 			float force = Mathf.Sqrt(2*(Mathf.Pow(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude,2F))-2*(Mathf.Pow(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude,2F))*Mathf.Cos((Mathf.PI/4)*Input.GetAxis ("Horizontal")));
