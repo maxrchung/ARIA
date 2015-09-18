@@ -18,10 +18,10 @@ public class SpeedTile : MonoBehaviour {
                 vec = Vector2.right;
                 break;
             case "Down":
-                vec = Vector2.down;
+                vec = -Vector2.up;
                 break;
             case "Left":
-                vec = Vector2.left;
+                vec = -Vector2.right;
                 break;
             default:
                 print("tag error");
