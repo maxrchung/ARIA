@@ -147,6 +147,10 @@ public class GameManager : MonoBehaviour {
 	public void NewRound() {
 		SetPositions();
 
+		foreach(GameObject p in players) {
+			StopMov(p);
+		}
+
 		// Resetting count down
 		countDownOver = false;
 		previousTime = totalTime;
