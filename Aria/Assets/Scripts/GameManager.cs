@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
 
 	private List<GameObject> players;
 	private List<Vector3> spawnPts;
+	private List<Quaternion> rotations;
 
 	private XmlDocument xmlDoc;
 	private XmlElement root;
@@ -56,6 +57,12 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			Debug.Log(":c");
+			Application.Quit();
+		}
+
 		if(gameStart) {
 			totalTime -= Time.deltaTime;
 			if(!countDownOver) {
@@ -109,6 +116,8 @@ public class GameManager : MonoBehaviour {
 	void CreateTeams(XmlNodeList team, XmlNodeList positions, GameObject boatPrefab, GameObject driverPrefab) {
 		
 		for(int i = 0; i < team.Count; i++) {
+			Quaternion rot=new Quaternion();
+            rot.eulerAngles = new Vector3(0, 0, float.Parse(positions.Item(i).Attributes["angle"].Value));
 			Vector3 temp = new Vector3(float.Parse(positions.Item(i).Attributes["x"].Value), float.Parse(positions.Item(i).Attributes["y"].Value), 0f);
 			
 			GameObject pBoat = (GameObject) Instantiate(boatPrefab, temp, Quaternion.identity);
@@ -127,6 +136,7 @@ public class GameManager : MonoBehaviour {
 
 			players.Add(pBoat);
 			spawnPts.Add(temp);
+			rotations.Add(rot);
 			
 		}
 		
@@ -149,10 +159,12 @@ public class GameManager : MonoBehaviour {
 		for(int i = 0; i < players.Count; i++) {
 			players[i].transform.position = spawnPts[i];
 			players[i].GetComponent<BoatController>().Stop();
+			players[i].transform.rotation = rotations[i];
 		}
 		cat.transform.position = catPos;
 		cat.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 		cat.GetComponent<Rigidbody2D>().angularVelocity = 0f;
+		cat.transform.rotation = Quaternion.identity;
 	}
 
 	// only called once per game
@@ -162,6 +174,7 @@ public class GameManager : MonoBehaviour {
 		// Set up players		
 		players = new List<GameObject>();
 		spawnPts = new List<Vector3>();
+		rotations = new List<Quaternion>();
 		CreateTeams(redTeam, posRed, redBoat, redDriver);
 		CreateTeams(blueTeam, posBlue, blueBoat, blueDriver);
 		foreach(GameObject p in players) {
@@ -201,8 +214,6 @@ public class GameManager : MonoBehaviour {
 	void ReadXML() {
 		redTeam = root.SelectNodes("teamOne/playerRed");
 		blueTeam = root.SelectNodes("teamTwo/playerBlue");
-		Debug.Log(redTeam.Count + " ;3;");
-		Debug.Log(blueTeam.Count + " weeeeeeeeeeeeeep");
 		string gameType = "oneVone";
 
 		if(redTeam.Count == 2) {

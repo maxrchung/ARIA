@@ -10,7 +10,7 @@ public class Transition : MonoBehaviour {
 
 	private float alpha = 0f;
 	public Texture2D fadeOutTexture;
-	private string gameScene = "map1";
+	private string gameScene = "Bruce";
 
 	// Use this for initialization
 	void Awake() {

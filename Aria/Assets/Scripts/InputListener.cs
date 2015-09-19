@@ -9,6 +9,8 @@ public class InputListener : MonoBehaviour {
 	public List<string> leftKeys;
 	public List<string> rightKeys;
 
+	private bool xmlUpdated;
+
 	public Button startGame;
 	private List<int> red;
 	private List<int> blue;
@@ -20,6 +22,7 @@ public class InputListener : MonoBehaviour {
 		red = new List<int>();
 		blue = new List<int>();
 		teamSize = leftKeys.Count/2;
+		xmlUpdated = false;
 	}
 	
 	// Update is called once per frame
@@ -27,7 +30,9 @@ public class InputListener : MonoBehaviour {
 		for(int i = 0; i < leftKeys.Count; i++) {
 			if(Input.GetKeyDown(leftKeys[i])) {
 				if(!red.Contains(i) && red.Count < teamSize) {
-					cam.GetComponent<GameManager>().AddTeamMember("teamOne", (i + 1).ToString(), "playerRed");
+					if(blue.Contains(i)) {
+						blue.Remove(i);
+					}
 					red.Add(i);
 					GameObject.FindGameObjectsWithTag(leftKeys[i] + rightKeys[i])[0].GetComponent<Image>().color = Color.red;
 				}
@@ -36,14 +41,22 @@ public class InputListener : MonoBehaviour {
 		for(int i = 0; i < rightKeys.Count; i++) {
 			if(Input.GetKeyDown(rightKeys[i])) {
 				if(!blue.Contains(i) && blue.Count < teamSize) {
-					cam.GetComponent<GameManager>().AddTeamMember("teamTwo", (i + 1).ToString(), "playerBlue");
+					if(red.Contains(i)) {
+						red.Remove(i);
+						Debug.Log(red.Count	);
+					}
 					blue.Add(i);
 					GameObject.FindGameObjectsWithTag(leftKeys[i] + rightKeys[i])[0].GetComponent<Image>().color = Color.blue;
 				}
 			}
 		}
-		if(blue.Count == teamSize && red.Count == teamSize) {
+		if(blue.Count == teamSize && red.Count == teamSize && !xmlUpdated) {
+			for(int i = 0; i < blue.Count; i++) {
+				cam.GetComponent<GameManager>().AddTeamMember("teamOne", (red[i] + 1).ToString(), "playerRed");
+				cam.GetComponent<GameManager>().AddTeamMember("teamTwo", (blue[i] + 1).ToString(), "playerBlue");		
+			}
 			startGame.gameObject.SetActive(true);
+			xmlUpdated = true;
 		}
 	}
 }
