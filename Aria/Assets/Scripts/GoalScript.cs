@@ -11,10 +11,8 @@ public class GoalScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnTriggerEnter2D (Collider2D other) {
-		Debug.Log("Sad face?");
 		
 		if (other.gameObject.transform.tag.Equals("Cat")){
-			Debug.Log("Sad face?");
 			//Change Score
 			mainCamera.GetComponent<GameManager>().AddScore(team);
 			//Reset Players

@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ScoreUIScript : MonoBehaviour {
 	public Camera mainCamera;
+	public int team;
 
 	// Use this for initialization
 	void Start () {
