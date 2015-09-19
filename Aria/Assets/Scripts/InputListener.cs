@@ -55,7 +55,7 @@ public class InputListener : MonoBehaviour {
 				cam.GetComponent<GameManager>().AddTeamMember("teamOne", (red[i] + 1).ToString(), "playerRed");
 				cam.GetComponent<GameManager>().AddTeamMember("teamTwo", (blue[i] + 1).ToString(), "playerBlue");		
 			}
-			startGame.gameObject.SetActive(true);
+			startGame.enabled = true;
 			xmlUpdated = true;
 		}
 	}
