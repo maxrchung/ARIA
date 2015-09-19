@@ -10,6 +10,7 @@ public class Transition : MonoBehaviour {
 
 	private float alpha = 0f;
 	public Texture2D fadeOutTexture;
+	private string gameScene = "map1";
 
 	// Use this for initialization
 	void Awake() {
@@ -29,4 +30,24 @@ public class Transition : MonoBehaviour {
 		Debug.Log(transTime);
 		return transTime;
 	}
+
+	public void StartRoutine(string b) {
+		StartCoroutine(Load(b));
+	}
+
+	public IEnumerator Load(string lvlName) {
+		yield return new WaitForSeconds(Fade(1));
+		Application.LoadLevel(lvlName);
+		float time = Fade(-1);
+		yield return new WaitForSeconds(.2f*time);
+		if(lvlName.Equals(gameScene)) {
+			GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<GameManager>().SetupGame();
+		}
+		yield return new WaitForSeconds(.8f*time);
+		if(lvlName.Equals(gameScene)) {
+			GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<GameManager>().StartNOW();
+		}
+	}
+
+
 }
