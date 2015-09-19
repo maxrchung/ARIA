@@ -256,4 +256,12 @@ public class GameManager : MonoBehaviour {
 			Debug.Log("Can't find xml");
 		}
 	}
+
+	public int GetTeam1Score(){
+		return team1Score;
+	}
+
+	public int GetTeam2Score(){
+		return team2Score;
+	}
 }

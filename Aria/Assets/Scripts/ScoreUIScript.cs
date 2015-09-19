@@ -13,6 +13,11 @@ public class ScoreUIScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.GetComponent<Text>().text="DERP";//mainCamera.GetComponent<GameManager>();
+		if (team==1){
+			gameObject.GetComponent<Text>().text=mainCamera.GetComponent<GameManager>().GetTeam1Score().ToString();
+		}
+		else if (team==2){
+			gameObject.GetComponent<Text>().text=mainCamera.GetComponent<GameManager>().GetTeam2Score().ToString();
+		}
 	}
 }
