@@ -6,6 +6,7 @@ public class DriverController : MonoBehaviour {
 	public GameObject parent;
 	public GameObject driverPos;
 	public GameObject driver;
+	public Text playerIndicator;
 
 	private bool keyPressed;
 	private string keyUp;
@@ -38,6 +39,10 @@ public class DriverController : MonoBehaviour {
 		else {
 			anim.SetBool("moving", false);
 		}
+	}
+
+	public void SetNumber(string num) {
+		playerIndicator.text = "p" + num;
 	}
 
 	void CheckKeyPressed() {

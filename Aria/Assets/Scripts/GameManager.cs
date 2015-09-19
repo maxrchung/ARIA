@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour {
 
 			GameObject pDriver = (GameObject) Instantiate(driverPrefab);
 			pDriver.GetComponent<DriverController>().parent = pBoat;
+			pDriver.GetComponent<DriverController>().SetNumber(team.Item(i).Attributes["num"].Value);
 			pDriver.GetComponent<DriverController>().driverPos = pBoat.transform.GetChild(0).gameObject;
 
 			players.Add(pBoat);
