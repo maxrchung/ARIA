@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject redDriver;
 	public GameObject blueDriver;
 
-	public GameObject trans;
+	private bool gameOver;
 
 	// Use this for initialization
 	void Awake () {
@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 
 		if(Input.GetKeyDown(KeyCode.Escape)) {
-			Debug.Log(":c");
 			Application.Quit();
 		}
 
@@ -68,8 +67,17 @@ public class GameManager : MonoBehaviour {
 			if(!countDownOver) {
 				CountDown();
 			}
-			else {
+			else if(!gameOver) {
 				UpdateTimer();
+				if(totalTime <= 0) {
+					WinSequence();
+				}
+			}
+			else {
+				if(Input.GetKeyDown("r")) {
+					this.GetComponent<Transition>().StartRoutine("StartMenu");
+					gameStart = false;
+				}
 			}
 		}
 	}
@@ -98,9 +106,38 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	void WinSequence() {
+		string sentence = "Congrats you win ";
+		string winner = "";
+		if(team1Score < team2Score) {
+			winner = sentence + "TEAM ARIA";
+		}
+		else if(team1Score > team2Score) {
+			winner = sentence + "TEAM HIMEYA";
+		}
+		else {
+			winner = "=O You both win!!!!! 8D";
+		}
+
+		GameObject panel = GameObject.FindGameObjectsWithTag("winScreen")[0];
+		panel.GetComponent<Image>().enabled = true;
+		GameObject txt = GameObject.FindGameObjectsWithTag("winnerText")[0];
+		txt.GetComponent<Text>().enabled = true;
+		txt.GetComponent<Text>().text = winner;
+		GameObject ugh = GameObject.FindGameObjectsWithTag("ugh")[0];
+		ugh.GetComponent<Text>().enabled = true;
+
+		gameOver = true;
+		RemoveTeams(root.SelectNodes("teamTwo").Item(0));
+		RemoveTeams(root.SelectNodes("teamOne").Item(0));
+	}
+
 	void UpdateTimer() {
 		int minutes = (int) (totalTime/60);
 		string seconds = string.Format("{0:00.00}", totalTime - minutes*60);
+		if(totalTime-minutes*60 < 0) {
+			seconds = string.Format("00.00");
+		}
 		gameTimer.text = minutes.ToString() + ":" + seconds;
 	}
 
@@ -175,7 +212,7 @@ public class GameManager : MonoBehaviour {
 	// only called once per game
 	public void SetupGame() {
 		ReadXML();
-
+		gameOver = false;
 		// Set up players		
 		players = new List<GameObject>();
 		spawnPts = new List<Vector3>();

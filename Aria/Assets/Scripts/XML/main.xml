@@ -24,11 +24,11 @@
 
 	<oneVone>
 		<redTeam>
-			<pos x="6" y="0" angle="90"></pos>
+			<pos x="6" y=".5" angle="90"></pos>
 		</redTeam>
 		
 		<blueTeam>
-			<pos x="-6" y="0" angle="270"></pos>
+			<pos x="-6" y="-.5" angle="270"></pos>
 		</blueTeam>
 	</oneVone>
 	
