@@ -8,15 +8,16 @@ public class GoalScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.FindGameObjectsWithTag("MainCamera")[0];
-		shake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeScript>();
+		shake = mainCamera.GetComponent<CameraShakeScript>();
 	}
 	
 	// Update is called once per frame
 	void OnTriggerEnter2D (Collider2D other) {
-		
 		if (other.gameObject.transform.tag.Equals("Cat")){
-			shake.screenSlam(0.2f,0.5f);
-			StartCoroutine (Wait (2.0f));
+			print (":(");
+			shake.screenSlam(0.2f,1.0f);
+			StartCoroutine (Wait (4.0f));
+			transform.GetChild (0).GetComponent<ParticleSystem>().Play();
 			//Change Score
 			mainCamera.GetComponent<GameManager>().AddScore(team);
 		}
