@@ -8,7 +8,7 @@ public class ScoreUIScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		mainCamera = GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame
