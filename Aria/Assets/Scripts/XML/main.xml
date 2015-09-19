@@ -12,23 +12,23 @@
 	
 	<twoVtwo>
 		<redTeam>
-			<pos x="-6" y="0" angle=""></pos>
-			<pos x="-2.8" y="0" angle=""></pos>
+			<pos x="5.5" y="1" angle="90"></pos>
+			<pos x="6" y="-1" angle="90"></pos>
 		</redTeam>
 		
 		<blueTeam>
-			<pos x="-6" y="0" angle=""></pos>
-			<pos x="-2.8" y="0" angle=""></pos>
+			<pos x="-5.5" y="1" angle="270"></pos>
+			<pos x="-6" y="-1" angle="270"></pos>
 		</blueTeam>
 	</twoVtwo>
-		
+
 	<oneVone>
 		<redTeam>
-			<pos x="-6" y="0"></pos>
+			<pos x="6" y="0" angle="90"></pos>
 		</redTeam>
 		
 		<blueTeam>
-			<pos x="-2.8" y="0"></pos>
+			<pos x="-6" y="0" angle="270"></pos>
 		</blueTeam>
 	</oneVone>
 	
