@@ -27,8 +27,8 @@ public class InputListener : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		for(int i = 0; i < leftKeys.Count; i++) {
-			if(Input.GetKeyDown(leftKeys[i])) {
+		for(int i = 0; i < rightKeys.Count; i++) {
+			if(Input.GetKeyDown(rightKeys[i])) {
 				if(!red.Contains(i) && red.Count < teamSize) {
 					if(blue.Contains(i)) {
 						blue.Remove(i);
@@ -38,8 +38,8 @@ public class InputListener : MonoBehaviour {
 				}
 			}
 		}
-		for(int i = 0; i < rightKeys.Count; i++) {
-			if(Input.GetKeyDown(rightKeys[i])) {
+		for(int i = 0; i < leftKeys.Count; i++) {
+			if(Input.GetKeyDown(leftKeys[i])) {
 				if(!blue.Contains(i) && blue.Count < teamSize) {
 					if(red.Contains(i)) {
 						red.Remove(i);

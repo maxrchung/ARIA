@@ -110,10 +110,10 @@ public class GameManager : MonoBehaviour {
 		string sentence = "Congrats you win ";
 		string winner = "";
 		if(team1Score < team2Score) {
-			winner = sentence + "TEAM ARIA";
+			winner = sentence + "ARIA COMPANY";
 		}
 		else if(team1Score > team2Score) {
-			winner = sentence + "TEAM HIMEYA";
+			winner = sentence + "HIMEYA COMPANY";
 		}
 		else {
 			winner = "=O You both win!!!!! 8D";

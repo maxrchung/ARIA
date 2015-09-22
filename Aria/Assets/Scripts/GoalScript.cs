@@ -14,10 +14,11 @@ public class GoalScript : MonoBehaviour {
 		particles = transform.GetChild (0).GetComponent<ParticleSystem>();
 		scoreable=true;
 	}
-	
+
 	// Update is called once per frame
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.gameObject.transform.tag.Equals("Cat") && scoreable){
+		if (other.gameObject.transform.tag.Equals("Cat") && scoreable)
+        {
 			print (":(");
 			scoreable=false;
 			shake.screenSlam(0.2f,1.0f);
