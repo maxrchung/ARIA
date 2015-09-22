@@ -15,7 +15,62 @@ Loading C:\Users\Wax Chug da Gwad\Desktop\ARIA\Aria\AriaTheFootball_Data\Managed
 Platform assembly: C:\Users\Wax Chug da Gwad\Desktop\ARIA\Aria\AriaTheFootball_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Wax Chug da Gwad\Desktop\ARIA\Aria\AriaTheFootball_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Wax Chug da Gwad\Desktop\ARIA\Aria\AriaTheFootball_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.047 seconds
+- Completed reload, in  0.074 seconds
 desktop: 1920x1080 60Hz; virtual: 3840x1156 at 0,-76
 <RI> Initializing input.
 <RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Wax Chug da Gwad\Desktop\ARIA\Aria\AriaTheFootball_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Wax Chug da Gwad\Desktop\ARIA\Aria\AriaTheFootball_Data\Managed\System.Xml.dll (this message is harmless)
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1bc8 -> priority: 1 
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.588125 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 367.
+Total: 0.362998 ms (FindLiveObjects: 0.018442 ms CreateObjectMapping: 0.021662 ms MarkObjects: 0.316160 ms  DeleteObjects: 0.006440 ms)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.359778 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 390.
+Total: 0.320551 ms (FindLiveObjects: 0.023419 ms CreateObjectMapping: 0.011124 ms MarkObjects: 0.282494 ms  DeleteObjects: 0.003220 ms)
+
+2(/x.x)/  └----┛
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+1(/x.x)/  └----┛
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.386710 ms
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 992.
+Total: 0.430914 ms (FindLiveObjects: 0.039227 ms CreateObjectMapping: 0.022833 ms MarkObjects: 0.353338 ms  DeleteObjects: 0.015222 ms)
+
